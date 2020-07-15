@@ -1,34 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
-        <!-- window action -->
-        <!--
-            The following tag is an action definition for a "window action",
-            that is an action opening a view or a set of views
-        -->
-        <!-- session form view -->
-        <record model="ir.ui.view" id="session_form_view">
-            <field name="name">session.form</field>
-            <field name="model">openacademy.session</field>
+        <record model="ir.ui.view" id="course_form_view">
+            <field name="name">course.form</field>
+            <field name="model">openacademy.course</field>
             <field name="arch" type="xml">
-                <form string="Session Form">
+                <form string="Course Form">
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="start_date"/>
-                            <field name="duration"/>
-                            <field name="seats"/>
+                            <field name="description"/>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
-
-        <record model="ir.actions.act_window" id="session_list_action">
-            <field name="name">Sessions</field>
-            <field name="res_model">openacademy.session</field>
-            <field name="view_mode">tree,form</field>
-        </record>
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
 
         <record model="ir.actions.act_window" id="course_list_action">
             <field name="name">Courses</field>
@@ -39,6 +29,9 @@
                 </p>
             </field>
         </record>
+        <menuitem id="session_menu" name="Sessions"
+                  parent="openacademy_menu"
+                  action="session_list_action"/>
         <!-- top level menu: no parent -->
         <menuitem id="main_openacademy_menu" name="Open Academy"/>
         <!-- A first level in the left side menu is needed
@@ -53,8 +46,6 @@
         <!-- Full id location:
              action="openacademy.course_list_action"
              It is not required when it is the same module -->
-        <menuitem id="session_menu" name="Sessions"
-                  parent="openacademy_menu"
-                  action="session_list_action"/>
+        
 
 </odoo>
